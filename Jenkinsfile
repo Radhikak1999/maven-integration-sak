@@ -5,11 +5,6 @@ pipeline
         maven 'maven'
     }
     stages {
-        stage('git clone') {
-            steps {
-                git 'https://github.com/ajit40/maven-integration-sak.git'
-            }
-        }
         stage('compile') {
             steps {
                 sh "mvn compile"
@@ -18,6 +13,21 @@ pipeline
         stage('test') {
             steps {
                 sh "mvn test"
+            }
+        }
+        stage('package') {
+            steps {
+                sh "mvn compile"
+            }
+        }
+        stage('verify') {
+            steps {
+                sh "mvn compile"
+            }
+        }
+        stage('install') {
+            steps {
+                sh "mvn compile"
             }
         }
     }
